@@ -11,19 +11,20 @@ final lightTheme = ThemeData(
   ),
   floatingActionButtonTheme: FloatingActionButtonThemeData(
     backgroundColor: _lightColorScheme.primary,
-    foregroundColor: Colors.white,
+    foregroundColor: _lightColorScheme.onPrimary,
   ),
   segmentedButtonTheme: _segmentedButtonTheme,
 );
 
 final darkTheme = ThemeData(
-    useMaterial3: true,
-    colorScheme: _darkColorScheme,
-    appBarTheme: AppBarTheme(
-      centerTitle: true,
-      backgroundColor: _darkColorScheme.primaryContainer,
-    ),
-    segmentedButtonTheme: _segmentedButtonTheme,);
+  useMaterial3: true,
+  colorScheme: _darkColorScheme,
+  appBarTheme: AppBarTheme(
+    centerTitle: true,
+    backgroundColor: _darkColorScheme.primaryContainer,
+  ),
+  segmentedButtonTheme: _segmentedButtonTheme,
+);
 
 SegmentedButtonThemeData get _segmentedButtonTheme => SegmentedButtonThemeData(
       style: ButtonStyle(
