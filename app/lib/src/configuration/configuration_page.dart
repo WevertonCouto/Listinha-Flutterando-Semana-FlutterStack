@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+
+import '../shared/stores/app_store.dart';
 
 class ConfigurationPage extends StatefulWidget {
   const ConfigurationPage({super.key});
@@ -10,6 +13,10 @@ class ConfigurationPage extends StatefulWidget {
 class _ConfigurationPageState extends State<ConfigurationPage> {
   @override
   Widget build(BuildContext context) {
+    final appStore = context.watch<AppStore>(
+      (store) => store.themeMode,
+    );
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Configurações'),
@@ -35,22 +42,22 @@ class _ConfigurationPageState extends State<ConfigurationPage> {
             ),
             RadioListTile(
               value: ThemeMode.system,
-              groupValue: ThemeMode.light,
-              onChanged: (mode) {},
+              groupValue: appStore.themeMode.value,
+              onChanged: appStore.changeThemeMode,
               title: const Text('Sistema'),
             ),
             RadioListTile(
-              value: ThemeMode.dark,
-              groupValue: ThemeMode.light,
-              onChanged: (mode) {},
+              value: ThemeMode.light,
+              groupValue: appStore.themeMode.value,
+              onChanged: appStore.changeThemeMode,
               title: const Text(
                 'Claro',
               ),
             ),
             RadioListTile(
-              value: ThemeMode.system,
-              groupValue: ThemeMode.light,
-              onChanged: (mode) {},
+              value: ThemeMode.dark,
+              groupValue: appStore.themeMode.value,
+              onChanged: appStore.changeThemeMode,
               title: const Text(
                 'Escuro',
               ),
